@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f6f7f2">
+    <meta name="description" content="A calm, AI-powered study planner that turns big goals into doable daily steps.">
+    <title>MindSprint — make study time count</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="MindSprint home">
+        <span class="brand-icon" aria-hidden="true">m</span>
+        <span>mindsprint<span class="brand-period">.</span></span>
+      </a>
+      <div class="student-badge" aria-label="Student details">
+        <span class="student-avatar" aria-hidden="true">K</span>
+        <span class="student-details"><strong>Krishan Kumar</strong><span>23BCON1598</span></span>
+      </div>
+    </header>
+
+    <main>
+      <section id="auth-view" class="auth-view">
+        <div class="auth-copy">
+          <span class="eyebrow"><span class="eyebrow-dot"></span> A LITTLE MORE FOCUS, EVERY DAY</span>
+          <h1>Big goals.<br><span>Small steps.</span></h1>
+          <p>Meet your AI study coach. Turn what you want to learn into a plan you can actually stick to.</p>
+          <div class="auth-proof"><span class="proof-stars" aria-hidden="true">✦ ✦ ✦</span><span>Made for curious minds and busy days.</span></div>
+        </div>
+        <div class="auth-card">
+          <div class="auth-card-heading">
+            <p class="eyebrow" id="auth-eyebrow">YOUR STUDY SPACE</p>
+            <h2 id="auth-title">Welcome back</h2>
+            <p id="auth-subtitle">A good session starts right here.</p>
+          </div>
+          <form id="auth-form">
+            <label id="name-field" class="field hidden" for="auth-name">Your name
+              <input id="auth-name" name="name" type="text" autocomplete="name" maxlength="80" placeholder="How should we call you?">
+            </label>
+            <label class="field" for="auth-email">Email address
+              <input id="auth-email" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="you@example.com">
+            </label>
+            <label class="field" for="auth-password">Password
+              <input id="auth-password" name="password" type="password" autocomplete="current-password" required minlength="8" maxlength="128" placeholder="At least 8 characters">
+            </label>
+            <p id="auth-error" class="form-error" role="alert"></p>
+            <button id="auth-submit" class="button button-primary button-full" type="submit">Sign in <span aria-hidden="true">↗</span></button>
+          </form>
+          <p class="auth-switch"><span id="auth-switch-copy">New to MindSprint?</span> <button id="auth-switch" class="text-button" type="button">Create an account</button></p>
+        </div>
+      </section>
+
+      <section id="dashboard" class="dashboard hidden">
+        <div class="dashboard-heading">
+          <div>
+            <p id="today-label" class="eyebrow"></p>
+            <h1 id="greeting">Your next good day starts here.</h1>
+            <p class="dashboard-subtitle">A little progress adds up. What would you like to work on?</p>
+          </div>
+          <button id="logout" class="button button-quiet" type="button">Sign out <span aria-hidden="true">↗</span></button>
+        </div>
+
+        <div class="stats-row" aria-label="Study progress">
+          <article class="stat-card">
+            <span class="stat-icon stat-icon-green" aria-hidden="true">✓</span>
+            <div><p>Completed</p><strong id="completed-count">0</strong><span>tasks this session</span></div>
+          </article>
+          <article class="stat-card">
+            <span class="stat-icon stat-icon-peach" aria-hidden="true">↗</span>
+            <div><p>On your list</p><strong id="pending-count">0</strong><span>steps to make progress</span></div>
+          </article>
+          <article class="stat-card streak-card">
+            <span class="streak-decoration" aria-hidden="true">✳</span>
+            <div><p>One step at a time</p><strong>You’ve got this.</strong><span>Every focused minute counts.</span></div>
+          </article>
+        </div>
+
+        <section class="ai-card" aria-labelledby="ai-title">
+          <div class="ai-card-top">
+            <div class="ai-icon" aria-hidden="true">✳</div>
+            <div>
+              <p class="eyebrow">YOUR PERSONAL STUDY COACH</p>
+              <h2 id="ai-title">Make a plan that feels doable.</h2>
+            </div>
+            <span class="ai-pill"><span></span> AI POWERED</span>
+          </div>
+          <p class="ai-description">Tell us what you’re learning and when you’d like to get there. We’ll break it into clear, manageable study sessions.</p>
+          <form id="plan-form" class="plan-form">
+            <label class="visually-hidden" for="goal-input">What do you want to learn?</label>
+            <input id="goal-input" name="goal" type="text" required minlength="5" maxlength="500" placeholder="e.g. Get comfortable with Python data structures">
+            <label class="visually-hidden" for="days-input">Number of days</label>
+            <select id="days-input" name="days" aria-label="Plan duration">
+              <option value="3">3 days</option>
+              <option value="7" selected>1 week</option>
+              <option value="14">2 weeks</option>
+              <option value="30">1 month</option>
+            </select>
+            <button id="plan-submit" class="button button-dark" type="submit">Build my plan <span aria-hidden="true">↗</span></button>
+          </form>
+          <p id="plan-error" class="form-error plan-error" role="alert"></p>
+          <div id="plan-result" class="plan-result hidden" aria-live="polite"></div>
+        </section>
+
+        <section class="tasks-section" aria-labelledby="tasks-title">
+          <div class="section-heading">
+            <div><p class="eyebrow">YOUR MOMENTUM</p><h2 id="tasks-title">Study checklist</h2></div>
+            <button id="show-task-form" class="button button-outline" type="button"><span aria-hidden="true">＋</span> Add a task</button>
+          </div>
+          <form id="task-form" class="task-form hidden">
+            <label class="field" for="task-title">Study task
+              <input id="task-title" name="title" type="text" required maxlength="140" placeholder="What’s one small step you can take?">
+            </label>
+            <label class="field" for="task-description">Details <span class="optional">(optional)</span>
+              <input id="task-description" name="description" type="text" maxlength="1000" placeholder="A topic, chapter, or reminder">
+            </label>
+            <label class="field date-field" for="task-date">Due date <span class="optional">(optional)</span>
+              <input id="task-date" name="due_date" type="date">
+            </label>
+            <div class="task-form-actions"><button class="button button-primary" type="submit">Save task</button><button id="cancel-task" class="button button-quiet" type="button">Cancel</button></div>
+          </form>
+          <div id="task-list" class="task-list"></div>
+          <div id="empty-state" class="empty-state hidden"><span aria-hidden="true">✳</span><h3>Your next step goes here.</h3><p>Add a task or ask your AI coach to build a plan.</p></div>
+        </section>
+        <p id="toast" class="toast" role="status" aria-live="polite"></p>
+      </section>
+    </main>
+    <footer><span>MindSprint</span><span>Make study time count.</span><span>Designed for your next small win <span aria-hidden="true">✳</span></span></footer>
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>
